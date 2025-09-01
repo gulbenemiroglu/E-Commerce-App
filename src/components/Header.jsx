@@ -7,19 +7,22 @@ import { FaMoon } from "react-icons/fa";
 
 const Header = () => {
 
-    const [theme, setTheme] = useState(false)
+    const [theme, setTheme] = useState("light")
 
     const changeTheme = () => {
         const root = document.getElementById("root")
-        if (theme) {
+        if (theme === "light") {
             root.style.backgroundColor = "black"
             root.style.color = "white"
+            setTheme("dark")
+
         }
         else {
             root.style.backgroundColor = "white"
             root.style.color = "black"
+            setTheme("light")
+
         }
-        setTheme(!theme)
     }
 
     return (
@@ -33,8 +36,10 @@ const Header = () => {
             </div>
             <div className='flex-row'>
                 {
-                    theme ? <CiLight className='icon' onClick={changeTheme} />
-                        : <FaMoon className='moon-icon' onClick={changeTheme} />
+                    theme === "light" ?
+                        <CiLight className='icon' onClick={changeTheme} />
+                        :
+                        <FaMoon className='moon-icon' onClick={changeTheme} />
                 }
                 <CiShoppingBasket className='icon' />
 
