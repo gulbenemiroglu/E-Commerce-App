@@ -7,12 +7,18 @@
 .logo {
     width: 60px;
     height: 60px;
+
 }
 
 .logo-text {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 600;
+}
+
+.logo:hover,
+.logo-text:hover {
+    cursor: pointer;
 }
 
 .header-search {
