@@ -4,9 +4,11 @@ import "../css/Header.css"
 import { CiShoppingBasket } from "react-icons/ci";
 import { CiLight } from "react-icons/ci";
 import { FaMoon } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
 
+    const navigate = useNavigate()
     const [theme, setTheme] = useState("light")
 
     const changeTheme = () => {
@@ -28,8 +30,8 @@ const Header = () => {
     return (
         <div className='header-wrapper'>
             <div className='flex-row'>
-                <img src={Logo} alt="" className='logo' />
-                <p className='logo-text'>ALGİT</p>
+                <img src={Logo} className='logo' onClick={() => navigate("/")} />
+                <p className='logo-text' onClick={() => navigate("/")}>ALGİT</p>
             </div>
             <div >
                 <input type="text" className='header-search' placeholder='Ara' />
