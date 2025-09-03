@@ -1,0 +1,42 @@
+.product-details-image {
+    width: 280px;
+    height: auto;
+}
+
+.product-details-card {
+    margin-top: 50px;
+    gap: 50px;
+    box-shadow: 0 0 8px lightgray;
+    padding: 50px;
+    border-radius: 8px;
+}
+
+.product-details-price {
+    font-size: 40px;
+}
+
+.product-details-button {
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    margin-left: 20px;
+}
+
+.product-details-button:hover {
+    cursor: pointer;
+    background-color: gray;
+    color: whitesmoke;
+    transition: all 0.2s;
+}
+
+.product-details-icons {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.plus-btn:hover,
+.minus-btn:hover {
+    cursor: pointer;
+}
