@@ -1,11 +1,12 @@
 import React from 'react'
 import "../css/Product.css"
 import { FaUpRightFromSquare } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom';
 
 
 const Product = ({ product }) => {
-    console.log(product);
     const { id, category, description, image, price, title } = product
+    const navigate = useNavigate()
     return (
         <div className='product-card'>
             <img src={image} alt="" className='product-image' />
@@ -15,12 +16,14 @@ const Product = ({ product }) => {
 
             </div>
             <div className='flex-column'>
-                <button className='product-button'>Detayına git
+                <button
+                    onClick={() => navigate("/product-details/" + id)}
+                    className='product-button' >Detayına git
                     <span className='icon-RightFromSquare'><FaUpRightFromSquare /></span>
                 </button>
 
             </div>
-        </div>
+        </div >
     )
 }
 
