@@ -20,3 +20,79 @@ body {
 #root {
   height: 100vh;
 }
+
+.basket-drawer-wrapper {
+  width: 450px;
+  padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.basket-drawer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 8px;
+  width: 400px;
+}
+
+.basket-drawer img {
+  width: 40px;
+  height: 40px;
+}
+
+.drawer-product-count {
+  width: 30px;
+  text-align: center;
+
+}
+
+.drawer-product-title {
+  width: 200px;
+  text-align: start;
+  white-space: nowrap;
+  /* satır kaymasını engeller */
+  overflow: hidden;
+  /* taşan kısmı gizler */
+  text-overflow: ellipsis;
+}
+
+
+
+.drawer-product-price {
+  width: 80px;
+  font-weight: bold;
+  color: rgb(172, 2, 2);
+  text-align: end;
+}
+
+.drawer-product-button {
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  width: 40px;
+}
+
+.drawer-product-button:hover {
+  cursor: pointer;
+  background-color: rgb(172, 2, 2);
+  color: whitesmoke;
+  transition: all 0.2s;
+}
+
+.MuiPaper-root {
+  display: flex;
+  align-items: center;
+}
+
+.total-amount-title {
+  margin-top: 50px;
+  font-weight: bold;
+}
+
+.total-amount {
+  color: rgb(172, 2, 2);
+}
