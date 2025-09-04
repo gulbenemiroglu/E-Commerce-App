@@ -69,14 +69,14 @@ body {
   text-align: end;
 }
 
-.drawer-product-button {
+.delete-product-button {
   border: none;
   padding: 12px;
   border-radius: 8px;
   width: 40px;
 }
 
-.drawer-product-button:hover {
+.delete-product-button:hover {
   cursor: pointer;
   background-color: rgb(172, 2, 2);
   color: whitesmoke;

@@ -7,7 +7,7 @@ import Loading from './components/Loading'
 import Drawer from '@mui/material/Drawer';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaRegTrashAlt } from "react-icons/fa";
-import { calculateBasket, setDrawer } from './store/basket/basketSlice'
+import { calculateBasket, setDrawer, removeFromBasket } from './store/basket/basketSlice'
 
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(calculateBasket)
-  }, [])
+    dispatch(calculateBasket())
+  }, [products])
 
   return (
     <div>
@@ -36,7 +36,9 @@ function App() {
                       <p className='drawer-product-count'>({product.count})</p>
                       <p className='drawer-product-title'>{product.title}</p>
                       <p className='drawer-product-price'>$ {product.price}</p>
-                      <button className='drawer-product-button'>
+                      <button
+                        className='delete-product-button'
+                        onClick={() => dispatch(removeFromBasket(product.id))}>
                         <FaRegTrashAlt />
                       </button>
                     </div>
@@ -46,7 +48,7 @@ function App() {
                 )
               })
             }
-            <div className='total-amount-title'>Total Amount: <span className='total-amount'> $ {totalAmount}</span></div>
+            <div className='total-amount-title'>Total Amount: <span className='total-amount'> $ {totalAmount.toFixed(2)}</span></div>
           </div>
 
         </Drawer>

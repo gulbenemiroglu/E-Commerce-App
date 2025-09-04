@@ -36,22 +36,26 @@ export const basketSlice = createSlice({
 
             }
 
-            // her durumda storage’a yaz
         },
 
         setDrawer: (state) => {
             state.drawer = !state.drawer
         },
-        calculateBasket: (state, action) => {
-            totalAmount = 0
-            state.products && state.products.map((product) => {
+
+        calculateBasket: (state) => {
+            state.totalAmount = 0;
+            state.products.forEach((product) => {
                 state.totalAmount += product.price * product.count;
-            })
-        }
+            });
+        },
+        removeFromBasket: (state, action) => {
+            state.products = state.products.filter((p) => p.id !== action.payload);
+            writeFromBasketToStorage(state.products);
+        },
     },
 
 })
 
-export const { addToBasket, setDrawer, calculateBasket } = basketSlice.actions
+export const { addToBasket, setDrawer, calculateBasket, removeFromBasket } = basketSlice.actions
 
 export default basketSlice.reducer
