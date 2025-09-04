@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDrawer } from '../store/basket/basketSlice';
+import { clearSearch, setSearch } from '../store/search/searchSlice';
+
 
 
 
@@ -16,10 +18,12 @@ import { setDrawer } from '../store/basket/basketSlice';
 const Header = () => {
 
     const navigate = useNavigate()
-    const [theme, setTheme] = useState("light")
     const dispatch = useDispatch();
-
     const { products } = useSelector((store) => store.basket)
+    const { query } = useSelector((store) => store.search);
+
+    const [inputValue, setInputValue] = useState(query || "")
+    const [theme, setTheme] = useState("light")
 
     const changeTheme = () => {
         const root = document.getElementById("root")
@@ -37,6 +41,13 @@ const Header = () => {
         }
     }
 
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            dispatch(setSearch(inputValue)); // 
+            setInputValue("");
+        }
+    };
+
     return (
         <div className='header-wrapper'>
             <div className='flex-row'>
@@ -44,7 +55,15 @@ const Header = () => {
                 <p className='logo-text' onClick={() => navigate("/")}>ALGİT</p>
             </div>
             <div >
-                <input type="text" className='header-search' placeholder='Ara' />
+                <input
+                    type="text"
+                    className='header-search'
+                    placeholder='Ara'
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyDown={handleKeyDown}
+
+                />
             </div>
             <div className='flex-row'>
                 {
