@@ -5,6 +5,7 @@ import { setSelectedProduct } from '../store/product/productSlice';
 import "../css/ProductDetails.css"
 import { CiCirclePlus } from "react-icons/ci";
 import { CiCircleMinus } from "react-icons/ci";
+import { addToBasket } from '../store/basket/basketSlice';
 
 
 const ProductDetails = () => {
@@ -30,6 +31,21 @@ const ProductDetails = () => {
         }
     }
 
+    const addBasket = () => {
+        if (count > 0) {
+            const payload = {
+                id,
+                price,
+                image,
+                title,
+                description,
+                count,
+            };
+            dispatch(addToBasket(payload));
+        }
+
+    }
+
     useEffect(() => {
         getProductById();
     }, [])
@@ -50,7 +66,7 @@ const ProductDetails = () => {
                     <span>{count}</span>
                     <CiCircleMinus className='minus-btn' onClick={decrement} />
 
-                    <button className='product-details-button'>Sepete Ekle</button>
+                    <button onClick={addBasket} className='product-details-button'>Sepete Ekle</button>
 
                 </div>
                 <div>

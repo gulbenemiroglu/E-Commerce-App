@@ -5,11 +5,19 @@ import { CiShoppingBasket } from "react-icons/ci";
 import { CiLight } from "react-icons/ci";
 import { FaMoon } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import Badge from '@mui/material/Badge';
+import { useSelector } from 'react-redux';
+
+
+
+
 
 const Header = () => {
 
     const navigate = useNavigate()
     const [theme, setTheme] = useState("light")
+
+    const { products } = useSelector((store) => store.basket)
 
     const changeTheme = () => {
         const root = document.getElementById("root")
@@ -42,10 +50,27 @@ const Header = () => {
                         <CiLight className='icon' onClick={changeTheme} />
                         :
                         <FaMoon className='moon-icon' onClick={changeTheme} />
-                }
-                <CiShoppingBasket className='icon' />
 
+
+                }
+                <Badge className='MuiBadge-badge' badgeContent={products.length} color='error' anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+
+
+                }}
+                    sx={{
+                        "& .MuiBadge-badge": {
+                            right: -1,   // ikonun üzerine oturması için
+                            top: -4,     // ikonun üstüne kaydırmak için
+                            transform: "scale(1)" // sayı çok büyükse küçültmek için
+                        }
+                    }}
+                >
+                    <CiShoppingBasket className='icon basket-icon' />
+                </Badge>
             </div>
+
         </div>
     )
 }
