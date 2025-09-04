@@ -26,24 +26,34 @@ const Header = () => {
     const [theme, setTheme] = useState("light")
 
     const changeTheme = () => {
-        const root = document.getElementById("root")
+        const root = document.getElementById("root");
+        const body = document.body;
+        const html = document.documentElement;
+
         if (theme === "light") {
-            root.style.backgroundColor = "black"
-            root.style.color = "white"
-            setTheme("dark")
-
+            html.style.height = "100%";
+            body.style.height = "100%";
+            root.style.minHeight = "100%"; // içerik uzunluğu için
+            html.style.backgroundColor = "black";
+            body.style.backgroundColor = "black";
+            root.style.backgroundColor = "black";
+            root.style.color = "white";
+            setTheme("dark");
+        } else {
+            html.style.height = "100%";
+            body.style.height = "100%";
+            root.style.minHeight = "100%";
+            html.style.backgroundColor = "white";
+            body.style.backgroundColor = "white";
+            root.style.backgroundColor = "white";
+            root.style.color = "black";
+            setTheme("light");
         }
-        else {
-            root.style.backgroundColor = "white"
-            root.style.color = "black"
-            setTheme("light")
-
-        }
-    }
+    };
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
-            dispatch(setSearch(inputValue)); // 
+            dispatch(setSearch(inputValue));
             setInputValue("");
         }
     };
@@ -51,8 +61,14 @@ const Header = () => {
     return (
         <div className='header-wrapper'>
             <div className='flex-row'>
-                <img src={Logo} className='logo' onClick={() => navigate("/")} />
-                <p className='logo-text' onClick={() => navigate("/")}>ALGİT</p>
+                <img src={Logo} className='logo' onClick={() => {
+                    dispatch(clearSearch());
+                    navigate("/");
+                }} />
+                <p className='logo-text' onClick={() => {
+                    dispatch(clearSearch());
+                    navigate("/");
+                }}>ALIŞVERİŞ</p>
             </div>
             <div >
                 <input
@@ -82,9 +98,9 @@ const Header = () => {
                 }}
                     sx={{
                         "& .MuiBadge-badge": {
-                            right: -1,   // ikonun üzerine oturması için
-                            top: -4,     // ikonun üstüne kaydırmak için
-                            transform: "scale(1)" // sayı çok büyükse küçültmek için
+                            right: -1,
+                            top: -4,
+                            transform: "scale(1)"
                         }
                     }}
 

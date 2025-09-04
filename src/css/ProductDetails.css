@@ -9,6 +9,8 @@
     box-shadow: 0 0 8px lightgray;
     padding: 50px;
     border-radius: 8px;
+    background-color: transparent;
+
 }
 
 .product-details-price {

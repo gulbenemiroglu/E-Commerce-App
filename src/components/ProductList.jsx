@@ -15,11 +15,12 @@ const ProductList = () => {
         dispatch(getAllProducts());
     }, [dispatch])
 
-    const filteredProducts = query
-        ? products?.filter((p) =>
-            p.title.toLowerCase().includes(query.toLowerCase())
-        )
-        : products;
+    const filteredProducts =
+        query && query.trim() !== ""
+            ? products?.filter((p) =>
+                p.title.toLowerCase().includes(query.toLowerCase())
+            )
+            : products;
 
     return (
         <div className="products-grid">

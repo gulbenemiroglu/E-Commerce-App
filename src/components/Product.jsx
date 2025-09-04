@@ -8,22 +8,25 @@ const Product = ({ product }) => {
     const { id, category, description, image, price, title } = product
     const navigate = useNavigate()
     return (
-        <div className='product-card'>
-            <img src={image} alt="" className='product-image' />
-            <div className='flex-column'>
-                <p className='product-title'>{title}</p>
-                <h3 className='product-price'>{price} $</h3>
+        <div className='product'>
 
-            </div>
-            <div className='flex-column'>
-                <button
-                    onClick={() => navigate("/product-details/" + id)}
-                    className='product-button' >Detayına git
-                    <span className='icon-RightFromSquare'><FaUpRightFromSquare /></span>
-                </button>
+            <div className='product-card'>
+                <img src={image} alt="" className='product-image' />
+                <div className='flex-column'>
+                    <p className='product-title'>{title}</p>
+                    <h3 className='product-price'>{price} $</h3>
 
-            </div>
-        </div >
+                </div>
+                <div className='flex-column'>
+                    <button
+                        onClick={() => navigate("/product-details/" + id)}
+                        className='product-button' >Detayına git
+                        <span className='icon-RightFromSquare'><FaUpRightFromSquare /></span>
+                    </button>
+
+                </div>
+            </div >
+        </div>
     )
 }
 

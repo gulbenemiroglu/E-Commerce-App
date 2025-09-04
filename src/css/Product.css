@@ -1,3 +1,7 @@
+.Mui-container {
+    height: 100vh;
+}
+
 .product-card {
     width: 200px;
     height: 380px;
